@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    background-image: url('images/kalem2.jpg'); /* Ganti 'gambar.jpg' dengan URL atau path gambar Anda */
+    background-size: cover; /* Membuat gambar mengisi seluruh area latar belakang */
+    background-position: center; /* Posisi gambar di tengah */
+    background-repeat: 2; /* Hindari pengulangan gambar */
+    background-attachment: fixed;
+  }
+
+.home{
+    /* margin-left: 100px; */
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* Tambahkan aturan CSS untuk memperlebar kolom nama dan alamat */
+#data-table th:nth-child(2),
+#data-table td:nth-child(2),
+#data-table th:nth-child(3),
+#data-table td:nth-child(3) {
+    width: 400px; /* Atur lebar kolom sesuai kebutuhan */
+}
+
+/* Sisipkan aturan CSS ini untuk menambahkan padding agar konten tidak terpotong */
+#data-table td,
+#data-table th {
+    padding: 10px;
+}
+
+table {
+    background-color: rgba(255, 255, 255, 0.5); /* set background transparan */
+    border-collapse: collapse;
+    opacity: 0.7; /* set tingkat transparansi */
+}
+  
+.cardtable {
+    background-color: rgba(255, 255, 255, 0.5); /* Set background tembus pandang */
+    padding: 20px; /* Tambahkan padding agar konten tidak terlalu dekat dengan tepi */
+    border-radius: 10px; /* Tambahkan border-radius agar tampilan lebih halus */
+    border-collapse: collapse;
+    opacity: 2.0 !important;  
+}
+
+.a:hover{
+ text-decoration: underline;
+}
+
+

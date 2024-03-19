@@ -1,0 +1,107 @@
+/* stylecover.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-image: url('images/kalem2.jpg'); /* Ganti 'gambar.jpg' dengan URL atau path gambar Anda */
+    background-size: cover; /* Membuat gambar mengisi seluruh area latar belakang */
+    background-position: center; /* Posisi gambar di tengah */
+    background-repeat: 2; /* Hindari pengulangan gambar */
+    background-attachment: fixed;
+  }
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    background-attachment: fixed;
+}
+
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: black;
+}
+
+.card {
+    width: auto !important; /* Adjust the size of the card */
+    height: auto; /* Auto height based on content */
+    background-color: rgba(53, 51, 51, 0.341) !important; /* Background color with opacity */
+    backdrop-filter: blur(-5px) !important; /* Blur effect */
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 600px !important;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the card */
+}
+
+.card-img-top {
+    width: 60% !important; /* Make image width 100% of its container */
+    height: 60% !important; /* Keep aspect ratio */
+}
+
+.card-title,
+.card-text {
+    color: rgb(185, 183, 183) !important;
+}
+
+.bn632-hover {
+    width: 160px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+}
+
+.bn632-hover:hover {
+    background-position: 100% 0;
+}
+
+.bn632-hover:focus {
+    outline: none;
+}
+
+.bn632-hover.bn25 {
+    background-image: linear-gradient(
+        to right,
+        #29323c,
+        #485563,
+        #2b5876,
+        #4e4376
+    );
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+
+#tabel-container {
+    margin-top: 20px !important; /* Sesuaikan dengan jumlah margin yang diinginkan */
+}
+
+
+.a:hover{
+    text-decoration: underline;
+   }
