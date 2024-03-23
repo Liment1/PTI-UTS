@@ -271,5 +271,17 @@ margin-left: 20px;
     margin-right: 3px;
 }
 
-
-
+.clock {
+    position: absolute;
+    top: 50px;
+    left: 45%;
+    transform: translateX(-35%) translateY(-50%);
+    color: white;
+    font-size: 20px;
+    font-family: Heletivica, sans-serif;
+    letter-spacing: 4px;
+    border: 10px;
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-top: 20px;
+}

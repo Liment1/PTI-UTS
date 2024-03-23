@@ -14,9 +14,10 @@
     <nav class="navbar fixed-top navbar-collapse navbar-expand-lg navbar-dark bg-dark p-md-3" data-bs-theme="dark">
         <div class="container vw-100">
             <a class="navbar-brand" href="cover.html">W Group</a>
+            <div id="MyClockDisplay" class="clock pb-5"></div> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+            </button>      
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="mx-auto"></div>
@@ -32,6 +33,7 @@
         </div>
     </nav>
 
+   
     <div class="home mx-auto w-75 w-md-80">
         <div class="content-wrapper">
             <!-- Your content here -->
@@ -179,6 +181,35 @@
 
 
 <script>
+    function showTime(){
+            var date = new Date();
+            var h = date.getHours(); 
+            var m = date.getMinutes(); 
+            var s = date.getSeconds(); 
+            var session = "AM";
+
+            if(h == 0){
+                h = 12;
+            }
+
+            if(h > 12){
+                h = h - 12;
+                session = "PM";
+            }
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+            var time = h + ":" + m + ":" + s + " " + session;
+            document.getElementById("MyClockDisplay").innerText = time;
+            document.getElementById("MyClockDisplay").textContent = time;
+
+            setTimeout(showTime, 1000);
+        }
+        showTime();
+
+
     // Sample data for demonstration
     var sampleData = [
         { nim: "00000000001", nama: "Admin", alamat: "System" },
@@ -300,9 +331,31 @@ function updatePaginationAndGoToLastPage() {
 
 // Add click event listener to save changes button in modal
 $('#saveChangesButton').click(function() {
+
     var nim = $('#editModal #nimInput').val();
     var nama = $('#editModal #namaInput').val();
     var alamat = $('#editModal #alamatInput').val();
+
+
+    if (nim === '' || nama === '' || alamat === '') {
+            
+            const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+            });
+            Toast.fire({
+            icon: "error",
+            title: "Data tidak boleh kosong!"
+            });
+        }
+        else {
 
     // Temukan baris yang sesuai dengan NIM yang diubah
     var row = $('#data-table tbody').find('tr').filter(function() {
@@ -332,11 +385,34 @@ $('#saveChangesButton').click(function() {
             title: "Data berhasil diubah!"
             });
 
-});
+}
+    });
+    
 
 // Add click event listener to delete buttons
 $('#data-table').on('click', '.deleteButton', function() {
-    $(this).closest('tr').remove();
+
+
+                const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+            title: "Konfirmasi",
+            text: "File yang terhapus tidak dapat dikembalikan lagi!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!   ",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+            }).then((result) => {
+            if (result.isConfirmed) {
+                
+
+                $(this).closest('tr').remove();
     // Update rows and pagination after deletion
     rows = $('#data-table tbody').find('tr');
     pageCount = Math.ceil(rows.length / 5);
@@ -358,6 +434,16 @@ $('#data-table').on('click', '.deleteButton', function() {
             icon: "success",
             title: "Data berhasil dihapus!"
             });
+
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            );
+            });
+
+
+
+
 
 });
 
